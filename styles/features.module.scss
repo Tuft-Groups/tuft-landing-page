@@ -1,0 +1,81 @@
+@import "./colors.module.scss";
+
+$horiontal_padding: 40px;
+$horiontal_padding_mobile: 20px;
+
+.features_home_layout {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 70px;
+
+  .features_layout_content {
+    h2 {
+      font-size: 50px;
+    }
+
+    h3 {
+      font-size: 25px;
+      font-weight: 500;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 40px $horiontal_padding_mobile;
+
+    .features_layout_content {
+      h2 {
+        font-size: 35px;
+      }
+      h3 {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.feature_card {
+  padding: 5vw;
+  background-color: #f6f6f6;
+
+  .features_layout_content {
+    padding: 10px $horiontal_padding;
+    height: 100%;
+
+    h3 {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    @media screen and (max-width: 600px) {
+      padding: 20px $horiontal_padding_mobile;
+
+      h2 {
+        font-size: 35px;
+      }
+
+      h3 {
+        font-size: 20px;
+      }
+    }
+
+    .custom_list {
+      list-style-type: none;
+      padding: 0px;
+
+      li {
+        padding-left: 30px;
+        font-family: $soraFont;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        background-image: url("/assets/icons/right_arrow.svg"); /* Replace with the path to your image */
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 30px 30px; /* Adjust the size of the image as needed */
+      }
+    }
+  }
+}
+
+.book_demo_section {
+  text-align: center;
+}

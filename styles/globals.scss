@@ -1,0 +1,42 @@
+@import "./button.module.scss";
+@import "./colors.module.scss";
+
+
+
+
+a {
+  color: $pink;
+  text-decoration: none;
+}
+
+button {
+  background: linear-gradient(90deg, $pink 0%, $purple 100%);
+  color: white;
+  outline: none;
+  border: none;
+  padding: 10px 21px;
+  border-radius: 11px;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0px;
+}
+
+.heading_text {
+  color: white;
+  background: linear-gradient(90.22deg, $pink, $purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: $soraFont;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
