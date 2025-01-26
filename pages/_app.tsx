@@ -1,7 +1,6 @@
 import "@/styles/globals.scss";
 import "@/styles/index.scss";
 import { MantineProvider } from "@mantine/core";
-import { Analytics } from "@vercel/analytics/react";
 import { AppProps } from "next/app";
 import { Mulish, Sora } from "@next/font/google";
 import Script from "next/script";
@@ -36,7 +35,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <MantineProvider theme={{ fontFamily: mulishFamily }} withCSSVariables>
         {process.env.NODE_ENV! !== "development" && (
           <>
-            <Analytics />
             <Script src="https://www.googletagmanager.com/gtag/js?id=G-4V7RECD9G6" strategy="lazyOnload" />
             <Script id="google-analytics" strategy="afterInteractive">
               {`

@@ -5,13 +5,14 @@ import { useViewportSize } from "@mantine/hooks";
 import fs from "fs";
 import matter from "gray-matter";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import path from "path";
 import { remark } from "remark";
 import html from "remark-html";
 
-export default function Post(props: { post: { title: string; desc: string; content: string; cover_image: string; date: string } }) {
+export default function Post(props: {
+  post: { title: string; desc: string; content: string; cover_image: string; date: string };
+}) {
   const { width } = useViewportSize();
   const isMobile = width < 900;
 
@@ -37,13 +38,23 @@ export default function Post(props: { post: { title: string; desc: string; conte
       <NavHeader />
       <Space h={20} />
       <center>
-        <h1 style={{ padding: isMobile ? "0px 5vw" : "0px 15vw", fontSize: isMobile ? "30px" : "50px" }}>{props.post.title}</h1>
+        <h1 style={{ padding: isMobile ? "0px 5vw" : "0px 15vw", fontSize: isMobile ? "30px" : "50px" }}>
+          {props.post.title}
+        </h1>
         <Space h={10} />
         <span style={{ fontSize: "18px", color: "#666" }}>On {props.post.date}</span>
         <Space h={20} />
-        <img src={props.post.cover_image} alt="cover_photo" sizes="100vw" style={{ objectFit: "cover", maxWidth: "60vw" }} />
+        <img
+          src={props.post.cover_image}
+          alt="cover_photo"
+          sizes="100vw"
+          style={{ objectFit: "cover", maxWidth: "60vw" }}
+        />
       </center>
-      <div style={{ padding: isMobile ? "1vh 10vw" : "1vh 15vw", lineHeight: "1.5", fontSize: "18px" }} dangerouslySetInnerHTML={{ __html: props.post.content }}></div>
+      <div
+        style={{ padding: isMobile ? "1vh 10vw" : "1vh 15vw", lineHeight: "1.5", fontSize: "18px" }}
+        dangerouslySetInnerHTML={{ __html: props.post.content }}
+      ></div>
       <center>
         <span>
           Know more about Tuft <Link href="/">here</Link>
