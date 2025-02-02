@@ -68,7 +68,7 @@ export default function Home(props: any) {
                   src={AppImages.SCREENSHOTS.HOME}
                   alt="home_page"
                   height={"600"}
-                  width={"320"}
+                  width={"300"}
                   objectFit="cover"
                   priority
                 />
@@ -160,7 +160,7 @@ export default function Home(props: any) {
                     <span style={{ color: "#79818D" }}>{item.desc}</span>
                     <Space h={30} />
                     {/* <img src={item.screenshot} alt="" style={{ maxHeight: "500px", objectFit: "contain" }} /> */}
-                    <Image src={item.screenshot} alt={item.title} height={500} width={260} />
+                    <Image src={item.screenshot} alt={item.title} height={600} width={307} />
                   </Stack>
                 </div>
               );

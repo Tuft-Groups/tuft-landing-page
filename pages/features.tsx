@@ -163,7 +163,7 @@ function FeatureCard({
         </Grid.Col>
         <Grid.Col lg={5} md={12}>
           <Center>
-            <Image src={image} alt={title} height={"500"} width={"250"} objectFit="cover" priority />
+            <Image src={image} alt={title} height={"600"} width={"307"} objectFit="cover" priority />
             {/* <img src={image} height={"500px"} /> */}
           </Center>
         </Grid.Col>

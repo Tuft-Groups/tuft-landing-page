@@ -12,13 +12,13 @@ export class AppImages {
   static PLAYSTORE_DOWNLOAD = "/assets/images/playstore_download.webp";
 
   static SCREENSHOTS = {
-    HOME: "/assets/app_screenshots/app_home_page.webp",
+    HOME: "/assets/app_screenshots/dashboard.webp",
     FEED: "/assets/app_screenshots/feed.webp",
     FILES: "/assets/app_screenshots/files.webp",
     ROOMS: "/assets/app_screenshots/rooms.webp",
     CHAT: "/assets/app_screenshots/chat.webp",
-    MEETINGS: "/assets/app_screenshots/meetings.png",
-    PAYMENTS: "/assets/app_screenshots/payments.png",
+    MEETINGS: "/assets/app_screenshots/meetings.webp",
+    PAYMENTS: "/assets/app_screenshots/payments.webp",
     FEATURES: "/assets/app_screenshots/features.webp",
   };
 
