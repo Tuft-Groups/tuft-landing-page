@@ -82,7 +82,7 @@ export default function Home() {
   const whyBrandedApp = [
     {
       title: "Enhanced Trust",
-      desc: "Build stronger engagement and credibility with a branded community platform.",
+      desc: "Build stronger engagement with a branded community platform.",
       screenshot: AppImages.trust,
     },
     {
@@ -98,7 +98,6 @@ export default function Home() {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -108,23 +107,6 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, []);
-
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    const scroll = () => {
-      if (!isPaused && container.scrollLeft < container.scrollWidth - container.clientWidth) {
-        container.scrollLeft += 1;
-      } else if (container.scrollLeft >= container.scrollWidth - container.clientWidth) {
-        container.scrollLeft = 0;
-      }
-    };
-
-    const scrollInterval = setInterval(scroll, 10);
-
-    return () => clearInterval(scrollInterval);
-  }, [isPaused]);
 
   return (
     <div className={`flex flex-col min-h-screen`}>
@@ -174,14 +156,9 @@ export default function Home() {
           <p className="text-center text-lg md:text-3xl text-gray-200 mt-4 max-w-[700px] mx-auto">
             Tuft comes with all the features you need to build a great and better community
           </p>
-          <div
-            ref={scrollContainerRef}
-            className="flex gap-8 mt-24 overflow-x-scroll"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
+          <div ref={scrollContainerRef} className="flex gap-8 mt-24 overflow-x-scroll">
             {featureList.map((feature, index) => (
-              <div key={index} className="flex flex-col bg-white/[0.03] p-6 rounded-3xl shrink-0 w-[300px]">
+              <div key={index} className="flex flex-col bg-white/[0.03] p-6 rounded-3xl shrink-0 w-[280px]">
                 <h2 className="text-2xl font-bold text-white">{feature.title}</h2>
                 <p className="text-md text-gray-200 mb-4">{feature.desc}</p>
                 <Image src={feature.screenshot} alt={feature.title} width={440} height={440} />
@@ -190,7 +167,7 @@ export default function Home() {
           </div>
         </div>
         {/* Use Cases Section */}
-        <div className="bg-gradient-to-b from-[#091D45] from-50% to-[#6665C0] min-h-screen p-4">
+        <div className="bg-gradient-to-b from-[#091D45] from-50% to-[#6665C0] min-h-screen px-4 py-8">
           <h2 className="text-3xl md:text-5xl font-bold text-center font-alexandria gradient-text">Use Cases</h2>
           <p className="text-center text-lg md:text-3xl text-gray-200 mt-4 max-w-[700px] mx-auto">
             Tuft is designed to work with any community, from small study groups to large organizations.
@@ -255,7 +232,7 @@ export default function Home() {
           </div>
         </div>
         {/* Branded App Section */}
-        <div className="py-24 bg-[#213064]">
+        <div className="py-24 px-4 bg-[#213064]">
           <h2 className="text-3xl md:text-5xl  font-bold text-center font-alexandria gradient-text">
             Your Brand, Your Platform
           </h2>
