@@ -39,3 +39,10 @@ export const AppImages = {
 export const AppLinks = {
   playstore_link: "https://play.google.com/store/apps/details?id=com.tuft.app",
 };
+
+export const AppMeta = {
+  title: "Tuft - All-in-One Community Management & Communication Platform",
+  description:
+    "Streamline your community with Tuft's comprehensive tools for organized communication, file sharing, payments, and analytics. Perfect for educators, webinar hosts, and content creators.",
+  image: "https://tuft.in/og-image.png",
+};
