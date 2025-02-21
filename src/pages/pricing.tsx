@@ -33,8 +33,8 @@ export default function Pricing() {
           </div>
         </div>
         <div className="px-10 md:px-20 py-8">
-          <h1 className="text-4xl md:text-6xl font-bold font-alexandria gradient-text">Want Your Own Branded App?</h1>
-          <p className="text-xl md:text-2xl mr-0 md:mr-36 mt-4">
+          <h1 className="text-2xl md:text-4xl font-bold font-alexandria gradient-text">Want Your Own Branded App?</h1>
+          <p className="text-lg md:text-2xl mr-0 md:mr-36 mt-4">
             Your community deserves its own identity. With Tuft’s white-label solution, you get a fully branded app—your
             name, your logo, your space. No more sharing platforms with countless other groups. Give your members a
             professional, distraction-free experience under your brand. We charge a small maintenance fee to keep your

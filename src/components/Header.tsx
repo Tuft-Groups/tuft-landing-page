@@ -22,10 +22,10 @@ export default function Header({ isHeaderWhite }: { isHeaderWhite?: boolean }) {
 
           {/* Hamburger Menu Button */}
           <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
-            <div className="space-y-2">
-              <span className={`block w-8 h-0.5 ${isHeaderWhite ? "bg-black" : "bg-white"}`}></span>
-              <span className={`block w-8 h-0.5 ${isHeaderWhite ? "bg-black" : "bg-white"}`}></span>
-              <span className={`block w-8 h-0.5 ${isHeaderWhite ? "bg-black" : "bg-white"}`}></span>
+            <div className="space-y-1">
+              <span className={`block w-6 h-0.5 ${isHeaderWhite ? "bg-black" : "bg-white"}`}></span>
+              <span className={`block w-6 h-0.5 ${isHeaderWhite ? "bg-black" : "bg-white"}`}></span>
+              <span className={`block w-6 h-0.5 ${isHeaderWhite ? "bg-black" : "bg-white"}`}></span>
             </div>
           </button>
 

@@ -167,16 +167,16 @@ export default function Home() {
           </div>
         </div>
         {/* Features Section */}
-        <div className="bg-gradient-to-b from-[#0A3D62] from-50% to-[#091D45] min-h-screen">
+        <div className="bg-gradient-to-b from-[#0A3D62] from-50% to-[#091D45] min-h-screen px-3 md:px-12">
           <h2 className="text-3xl md:text-5xl font-bold text-center font-alexandria gradient-text">
             All the features you need
           </h2>
-          <p className="text-center text-xl md:text-3xl text-gray-200 mt-4">
-            Tuft comes with all the features you need to build a <br /> great and better community
+          <p className="text-center text-lg md:text-3xl text-gray-200 mt-4 max-w-[700px] mx-auto">
+            Tuft comes with all the features you need to build a great and better community
           </p>
           <div
             ref={scrollContainerRef}
-            className="flex gap-8 mx-12 mt-24 overflow-x-scroll"
+            className="flex gap-8 mt-24 overflow-x-scroll"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
@@ -190,10 +190,10 @@ export default function Home() {
           </div>
         </div>
         {/* Use Cases Section */}
-        <div className="bg-gradient-to-b from-[#091D45] from-50% to-[#6665C0] min-h-screen py-28">
+        <div className="bg-gradient-to-b from-[#091D45] from-50% to-[#6665C0] min-h-screen p-4">
           <h2 className="text-3xl md:text-5xl font-bold text-center font-alexandria gradient-text">Use Cases</h2>
-          <p className="text-center text-xl md:text-3xl text-gray-200 mt-4">
-            Tuft is designed to work with any community, from <br /> small study groups to large organizations.
+          <p className="text-center text-lg md:text-3xl text-gray-200 mt-4 max-w-[700px] mx-auto">
+            Tuft is designed to work with any community, from small study groups to large organizations.
           </p>
           <div className="flex flex-col md:flex-row justify-center items-center gap-8 mt-16">
             <div className="flex flex-col gap-8">
@@ -255,7 +255,7 @@ export default function Home() {
           </div>
         </div>
         {/* Branded App Section */}
-        <div className="py-28 bg-[#213064]">
+        <div className="py-24 bg-[#213064]">
           <h2 className="text-3xl md:text-5xl  font-bold text-center font-alexandria gradient-text">
             Your Brand, Your Platform
           </h2>
@@ -264,12 +264,12 @@ export default function Home() {
             unique experience.
           </p>
 
-          <div className="flex flex-col md:flex-row gap-8 px-12 py-12 justify-center">
+          <div className="flex flex-col md:flex-row gap-8 py-12 justify-center items-center">
             {whyBrandedApp.map((feature, index) => (
               <div key={index} className="flex flex-col bg-white/[0.03] p-6 rounded-3xl w-[400px] max-w-full">
                 <Image src={feature.screenshot} alt={feature.title} width={64} height={64} />
                 <h2 className="text-xl md:text-2xl font-bold text-white mt-4">{feature.title}</h2>
-                <p className="text-md md:text-xl text-gray-200 mb-4">{feature.desc}</p>
+                <p className="text-md md:text-xl text-gray-200">{feature.desc}</p>
               </div>
             ))}
           </div>

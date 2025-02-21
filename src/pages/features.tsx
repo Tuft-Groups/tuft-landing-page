@@ -16,7 +16,7 @@ export default function Home() {
       </Head>
       <Header isHeaderWhite={true} />
 
-      <div className="flex justify-between px-[70px] py-10 md:px-4">
+      <div className="flex justify-between px-5 py-10 md:px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-4">
           <div className="lg:col-span-7 md:col-span-12">
             <div className="flex flex-col justify-center px-0 md:px-20 h-full">
@@ -123,7 +123,7 @@ function FeatureCard({
   reverse?: boolean;
 }) {
   return (
-    <div className="p-16 bg-white">
+    <div className="px-5 py-10 md:px-16 bg-white">
       <div className={`w-full flex ${reverse ? "flex-row-reverse" : "flex-row"} flex-wrap`}>
         <div className="w-full lg:w-7/12 md:w-full gap-8">
           <div className="flex flex-col justify-center h-full gap-6 px-0 md:px-8">
