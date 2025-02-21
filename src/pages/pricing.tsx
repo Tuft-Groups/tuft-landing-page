@@ -2,11 +2,19 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { AppImages } from "@/lib/constants";
+import Head from "next/head";
 import Image from "next/image";
 
 export default function Pricing() {
   return (
     <div className={`flex flex-col min-h-screen`}>
+      <Head>
+        <title>Tuft Pricing - All Features Free | Community Management Platform</title>
+        <meta
+          name="description"
+          content="Access all of Tuft's premium community management features completely free. No hidden costs. Get organized communication, file sharing, payments, and analytics tools today."
+        />
+      </Head>
       <Header />
       <main className="flex-grow">
         <div className="flex flex-col bg-[#6665C0] text-white px-10 md:px-20 py-8">

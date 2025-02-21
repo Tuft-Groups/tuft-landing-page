@@ -1,6 +1,5 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import styles from "@/styles/blog.module.scss";
 import Head from "next/head";
 import { useState } from "react";
 
@@ -10,8 +9,11 @@ export default function Blog() {
   return (
     <>
       <Head>
-        <title>Blog | Tuft</title>
-        <meta name="description" content="Manage your communities like never before" />
+        <title>Tuft Blog - Community Management Tips & Platform Updates</title>
+        <meta
+          name="description"
+          content="Discover insights on community building, engagement strategies, and the latest Tuft features. Learn how to better manage your educational, creator, or local community."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
