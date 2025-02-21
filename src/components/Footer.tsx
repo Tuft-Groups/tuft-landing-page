@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#f5f7fa] text-gray-600 py-10 px-10">
+    <footer className="bg-[#f5f7fa] text-gray-600 pt-10 pb-4 px-10">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <div className="col-span-1">
           <Image src={AppImages.long_logo} height={40} width={90} alt="tuft_logo" />
@@ -70,7 +70,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="h-12" />
       <div className="text-center">Copyright © 2023 Tuft. All rights reserved.</div>
     </footer>
   );
