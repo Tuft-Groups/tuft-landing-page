@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import styles from "@/styles/blog.module.scss";
 import Head from "next/head";
 import { useState } from "react";
 
@@ -14,7 +15,7 @@ export default function Blog() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header isHeaderWhite={true} />
+      <Header />
 
       <div className="mt-5 p-[2vw]">
         <div className="px-[4vw]">
