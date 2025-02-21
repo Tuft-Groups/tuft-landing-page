@@ -29,7 +29,7 @@ export default function Blog() {
           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-6">
             {blogs.map((blog, index) => (
               <div key={index} className="w-full h-full">
-                <a href={"/blog/" + blog.link} className="h-full block">
+                <a href={"/blog" + blog.link} className="h-full block">
                   <div className="border-2 border-[#dad8d8] rounded-[10px] text-left h-full flex flex-col">
                     <img src={blog.cover_photo} className="w-full h-[240px] object-cover rounded-t-[10px]" />
                     <div className="p-[15px] flex-1 flex flex-col justify-between">
