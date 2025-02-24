@@ -4,7 +4,7 @@ import { AppImages } from "@/lib/constants";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-export const runtime = "edge";
+export const runtime = "experimental-edge";
 
 export async function getServerSideProps() {
   try {
