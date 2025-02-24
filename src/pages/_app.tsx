@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Alexandria, Mulish } from "next/font/google";
 import Head from "next/head";
+import Script from "next/script";
 
 const mulish = Mulish({
   subsets: ["latin"],
@@ -51,6 +52,15 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta name="author" content="Tuft" />
         <link rel="canonical" href="https://tuft.in" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-4V7RECD9G6');
+        `}
+        </Script>
       </Head>
       <Component className={mulish.className} {...pageProps} />
     </div>
