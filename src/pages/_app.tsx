@@ -52,8 +52,8 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta name="author" content="Tuft" />
         <link rel="canonical" href="https://tuft.in" />
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-4V7RECD9G6"></Script>
-        <Script id="google-analytics" strategy="afterInteractive">
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-4V7RECD9G6" />
+        <script id="google-analytics">
           {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
@@ -61,7 +61,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
           gtag('config', 'G-4V7RECD9G6');
         `}
-        </Script>
+        </script>
       </Head>
       <Component className={mulish.className} {...pageProps} />
     </div>
