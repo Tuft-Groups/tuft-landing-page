@@ -4,6 +4,8 @@ import { AppImages } from "@/lib/constants";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
+export const runtime = "edge";
+
 export async function getServerSideProps() {
   try {
     fetch("https://tuft-core-400170117812.asia-south1.run.app/internal/website_visit", {
