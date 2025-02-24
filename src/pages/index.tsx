@@ -8,8 +8,11 @@ export const runtime = "experimental-edge";
 
 export async function getServerSideProps() {
   try {
-    fetch("https://tuft-core-400170117812.asia-south1.run.app/internal/website_visit", {
+    await fetch("https://tuft-core-400170117812.asia-south1.run.app/internal/website_visit", {
       method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
   } catch (error) {
     console.error("Failed to record visit:", error);
