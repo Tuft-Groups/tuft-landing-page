@@ -6,7 +6,8 @@ export const AppImages = {
   football: "/assets/images/football.webp",
   home_page_bg: "/assets/images/home_page_bg.png",
   long_logo: "/assets/images/long_logo.webp",
-  playstore_download: "/assets/images/playstore_download.webp",
+  playstore_download: "/assets/images/playstore_download.png",
+  appstore_download: "/assets/images/applestore_download.png",
   school: "/assets/images/school.webp",
   short_logo: "/assets/images/short_logo.png",
   student_clubs: "/assets/images/student_clubs.webp",
@@ -38,6 +39,7 @@ export const AppImages = {
 
 export const AppLinks = {
   playstore_link: "https://play.google.com/store/apps/details?id=com.tuft.app",
+  appstore_link: "https://apps.apple.com/jp/app/tuft-groups/id6461823307?l=en-US",
 };
 
 export const AppMeta = {

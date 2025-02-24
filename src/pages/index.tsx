@@ -2,7 +2,21 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { AppImages } from "@/lib/constants";
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+export async function getServerSideProps() {
+  try {
+    fetch("https://tuft-core-400170117812.asia-south1.run.app/internal/website_visit", {
+      method: "GET",
+    });
+  } catch (error) {
+    console.error("Failed to record visit:", error);
+  }
+
+  return {
+    props: {}, // Return empty props since we don't need to pass data to the page
+  };
+}
 
 export default function Home() {
   const targetAudience = [
@@ -107,7 +121,6 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, []);
-
   return (
     <div className={`flex flex-col min-h-screen`}>
       <Header />

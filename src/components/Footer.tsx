@@ -14,9 +14,14 @@ export default function Footer() {
             Manage your Communities <br /> like never before
           </span>
           <div className="h-5" />
-          <a href={AppLinks.playstore_link}>
-            <Image src={AppImages.playstore_download} alt="playstore" width={120} height={50} />
-          </a>
+          <div className="flex gap-4 items-center">
+            <a href={AppLinks.playstore_link}>
+              <Image src={AppImages.playstore_download} alt="playstore" width={120} height={50} />
+            </a>
+            <a href={AppLinks.appstore_link}>
+              <Image src={AppImages.appstore_download} alt="appstore" width={120} height={50} />
+            </a>
+          </div>
         </div>
 
         <div className="col-span-1 sm:col-span-1">

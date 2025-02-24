@@ -1,8 +1,7 @@
 import { AppMeta } from "@/lib/constants";
 import "@/styles/globals.css";
-import { Metadata } from "next";
 import type { AppProps } from "next/app";
-import { Mulish, Alexandria } from "next/font/google";
+import { Alexandria, Mulish } from "next/font/google";
 import Head from "next/head";
 
 const mulish = Mulish({
