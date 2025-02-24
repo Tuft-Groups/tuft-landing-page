@@ -6,13 +6,39 @@ import { useEffect, useRef, useState } from "react";
 
 export const runtime = "experimental-edge";
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context: any) {
+  const { req } = context;
+
   try {
+    // Extract User-Agent and Referrer
+    const userAgent = req.headers["user-agent"] || "";
+    const referrer = req.headers["referer"] || "Direct Visit"; // If no referrer, it's direct
+
+    // Detect if the request is from a bot
+    const isBot = /bot|crawl|spider|slurp|facebookexternalhit|WhatsApp|Telegram/i.test(userAgent);
+
+    // Detect device type
+    let deviceType = "Unknown";
+    if (/mobile/i.test(userAgent)) {
+      deviceType = "Mobile";
+    } else if (/tablet/i.test(userAgent)) {
+      deviceType = "Tablet";
+    } else {
+      deviceType = "Desktop";
+    }
+
     await fetch("https://tuft-core-400170117812.asia-south1.run.app/internal/website_visit", {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        isBot,
+        userAgent,
+        deviceType,
+        referrer,
+        timestamp: new Date().toISOString(),
+      }),
     });
   } catch (error) {
     console.error("Failed to record visit:", error);

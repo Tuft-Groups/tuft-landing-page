@@ -52,6 +52,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta name="author" content="Tuft" />
         <link rel="canonical" href="https://tuft.in" />
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-4V7RECD9G6"></Script>
         <Script id="google-analytics" strategy="afterInteractive">
           {`
           window.dataLayer = window.dataLayer || [];
