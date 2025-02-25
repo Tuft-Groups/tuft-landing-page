@@ -3,59 +3,57 @@ import Header from "@/components/Header";
 import fs from "fs";
 import matter from "gray-matter";
 import Head from "next/head";
-import Link from "next/link";
 import path from "path";
-import { remark } from "remark";
-import html from "remark-html";
+import Markdown from "react-markdown";
 
 export default function Post(props: {
   post: { title: string; desc: string; content: string; cover_image: string; date: string };
 }) {
   return (
     <>
-      <style jsx global>
+      <style>
         {`
-          p img {
-            max-height: 800px;
-            max-width: 100%;
-            display: block;
-            margin: auto;
+
+          #content * {
+              font-size: 20px;
+          }
+
+          #content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
+            margin: 0.65rem 0;
+            font-size: revert;
+          }
+          
+          #content img {
+            margin: 2.5rem 0;
           }
         `}
       </style>
-      {/*  */}
       <Head>
         <title>{props.post.title}</title>
+        <meta name="description" content={props.post.desc} />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:type" content="article" />
         <meta property="og:title" content={props.post.title} />
         <meta property="og:description" content={props.post.desc} />
         <meta property="og:image" content={props.post.cover_image} />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content={props.post.title} />
+        <meta property="twitter:description" content={props.post.desc} />
+        <meta property="twitter:image" content={props.post.cover_image} />
       </Head>
       <Header isHeaderWhite={true} />
-      <div className="mt-20" />
-      <div className="text-center">
-        <h1 className="px-[5vw] md:px-[15vw] text-[30px] md:text-[50px] font-semibold font-alexandria">
-          {props.post.title}
-        </h1>
 
-        <span className="text-lg text-[#666]">On {props.post.date}</span>
-        <div className="mt-20" />
-        <img
-          src={props.post.cover_image}
-          alt="cover_photo"
-          sizes="100vw"
-          className="object-cover max-w-[60vw] mx-auto mb-10"
-        />
-      </div>
-      <div
-        className={`px-[12vw] md:px-[15vw] py-[1vh] leading-relaxed text-lg`}
-        dangerouslySetInnerHTML={{ __html: props.post.content }}
-      ></div>
-      <div className="text-center">
-        <span>
-          Know more about Tuft <Link href="/">here</Link>
-        </span>
-      </div>
-      <div className="mt-20" />
+      <main className="flex flex-col items-center max-w-[90vw] md:max-w-[60vw] mx-auto my-12">
+        <h1 className="text-[30px] md:text-[50px] font-semibold font-alexandria text-center ">{props.post.title}</h1>
+        <span className="text-lg text-[#666] mb-10">On {props.post.date}</span>
+
+        <img src={props.post.cover_image} alt="cover_photo" sizes="100vw" className="object-cover mx-auto mb-10" />
+        <div id="content" className={`py-[1vh] `}>
+          <Markdown>{props.post.content}</Markdown>
+        </div>
+      </main>
+
       <Footer />
     </>
   );
@@ -81,14 +79,14 @@ export async function getStaticProps({ params: { slug } }: any) {
 
   const { data: frontmatter, content } = matter(markdownWithMeta);
 
-  const result = await remark().use(html).process(content);
-  const contentHtml = result.toString();
+  // const result = await remark().use(html).process(content);
+  // const contentHtml = result.toString();
 
   return {
     props: {
       post: {
         ...frontmatter,
-        content: contentHtml,
+        content: content,
       },
     },
   };

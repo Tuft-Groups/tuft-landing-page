@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { AppImages } from "@/lib/constants";
+import { AppImages, AppMeta } from "@/lib/constants";
+import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -23,16 +24,6 @@ export async function getServerSideProps(context: any) {
     // Convert x-forwarded-for to string if it's an array
     const clientIP = Array.isArray(ip) ? ip[0] : ip;
 
-    // Log headers for debugging
-    console.log("Request headers:", {
-      userAgent,
-      referrer: req.headers["referer"],
-      origin: req.headers.origin,
-      host: req.headers.host,
-      ip: clientIP,
-      allHeaders: req.headers,
-    });
-
     // Detect if the request is from a bot
     const isBot = /bot|crawl|spider|slurp|facebookexternalhit|WhatsApp|Telegram/i.test(userAgent);
 
@@ -46,20 +37,22 @@ export async function getServerSideProps(context: any) {
       deviceType = "Desktop";
     }
 
-    await fetch("https://tuft-core-400170117812.asia-south1.run.app/internal/website_visit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        isBot,
-        userAgent,
-        deviceType,
-        referrer,
-        ip: clientIP,
-        timestamp: new Date().toISOString(),
-      }),
-    });
+    if (!isBot) {
+      await fetch("https://tuft-core-400170117812.asia-south1.run.app/internal/website_visit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          isBot,
+          userAgent,
+          deviceType,
+          referrer,
+          ip: clientIP,
+          timestamp: new Date().toISOString(),
+        }),
+      });
+    }
   } catch (error) {
     console.error("Failed to record visit:", error);
   }
@@ -174,6 +167,22 @@ export default function Home() {
   }, []);
   return (
     <div className={`flex flex-col min-h-screen`}>
+      <Head>
+        <title>{AppMeta.title}</title>
+        <meta name="description" content={AppMeta.description} />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://tuft.in" />
+        <meta property="og:title" content={AppMeta.title} />
+        <meta property="og:description" content={AppMeta.description} />
+        <meta property="og:image" content={AppMeta.image} />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://tuft.in" />
+        <meta property="twitter:title" content={AppMeta.title} />
+        <meta property="twitter:description" content={AppMeta.description} />
+        <meta property="twitter:image" content={AppMeta.image} />
+      </Head>
       <Header />
       <main className="flex-grow">
         {/* Hero Section */}

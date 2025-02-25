@@ -50,7 +50,7 @@ export default function Blog() {
 
 const blogs = [
   {
-    title: "Introducing Feed: Where Announcements Shine",
+    title: "Introducing Feed: Where Group Updates are never lost",
     date: "1st Aug, 2023",
     cover_photo:
       "https://pub-3a63e4a193254663a7631829c69adb4a.r2.dev/blog_images/introducing_feed/introducing_feed.png",
@@ -71,7 +71,7 @@ const blogs = [
     link: "/introducing_files",
   },
   {
-    title: "Introducing Meetings: How Tuft Revolutionizes Group Communication",
+    title: "Introducing Meetings: Unlimit Your Community Connections",
     date: "1st Aug, 2023",
     cover_photo:
       "https://pub-3a63e4a193254663a7631829c69adb4a.r2.dev/blog_images/introducing_meetings/introducing_meetings.png",
