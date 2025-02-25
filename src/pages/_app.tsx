@@ -3,7 +3,6 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Alexandria, Mulish } from "next/font/google";
 import Head from "next/head";
-import Script from "next/script";
 
 const mulish = Mulish({
   subsets: ["latin"],

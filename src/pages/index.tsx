@@ -10,20 +10,39 @@ export async function getServerSideProps(context: any) {
   const { req } = context;
 
   try {
-    // Extract User-Agent and Referrer
+    // Extract User-Agent and Referrer (with better fallback handling)
     const userAgent = req.headers["user-agent"] || "";
-    const referrer = req.headers["referer"] || "Direct Visit"; // If no referrer, it's direct
+    const referrer =
+      req.headers["referer"] ||
+      req.headers["referrer"] ||
+      (req.headers.origin ? `Origin: ${req.headers.origin}` : "Direct Visit");
+
+    // Get IP address (checking multiple headers)
+    const ip = req.headers["x-forwarded-for"] || req.headers["x-real-ip"] || req.socket?.remoteAddress || "Unknown";
+
+    // Convert x-forwarded-for to string if it's an array
+    const clientIP = Array.isArray(ip) ? ip[0] : ip;
+
+    // Log headers for debugging
+    console.log("Request headers:", {
+      userAgent,
+      referrer: req.headers["referer"],
+      origin: req.headers.origin,
+      host: req.headers.host,
+      ip: clientIP,
+      allHeaders: req.headers,
+    });
 
     // Detect if the request is from a bot
     const isBot = /bot|crawl|spider|slurp|facebookexternalhit|WhatsApp|Telegram/i.test(userAgent);
 
-    // Detect device type
+    // Detect device type with more specific patterns
     let deviceType = "Unknown";
-    if (/mobile/i.test(userAgent)) {
+    if (/Mobile|Android|iPhone|iPad|iPod/i.test(userAgent)) {
       deviceType = "Mobile";
-    } else if (/tablet/i.test(userAgent)) {
+    } else if (/tablet|ipad|playbook|silk/i.test(userAgent)) {
       deviceType = "Tablet";
-    } else {
+    } else if (/Windows|Macintosh|Linux/i.test(userAgent)) {
       deviceType = "Desktop";
     }
 
@@ -37,6 +56,7 @@ export async function getServerSideProps(context: any) {
         userAgent,
         deviceType,
         referrer,
+        ip: clientIP,
         timestamp: new Date().toISOString(),
       }),
     });
@@ -281,7 +301,7 @@ export default function Home() {
             Your Brand, Your Platform
           </h2>
           <p className="text-center text-xl md:text-3xl mt-4 text-white">
-            Launch your own branded app with Tuft’s white-label solution—fully customized <br /> with your logo and
+            Launch your own branded app with Tuft's white-label solution—fully customized <br /> with your logo and
             unique experience.
           </p>
 
