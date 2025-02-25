@@ -57,7 +57,7 @@ export default function Footer() {
             </div>
             <div className="flex items-center gap-2">
               <Mail color="#C554B7" />
-              <span>neeraj.sameer@tuft.in</span>
+              <span>contact@tuft.in</span>
             </div>
             <div className="h-2.5" />
             <p className="font-bold">Follow us on</p>
