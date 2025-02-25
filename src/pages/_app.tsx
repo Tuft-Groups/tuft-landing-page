@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <div className={`${mulish.variable} ${alexandria.variable} min-h-screen flex flex-col font-mulish`}>
       <Head>
-        <title>Tuft - All-in-One Community Management & Communication Platform</title>
+        <title>Tuft - The most powerful community platform</title>
         <meta name="description" content={AppMeta.description} />
 
         {/* Favicon */}
