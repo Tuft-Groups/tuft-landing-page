@@ -38,20 +38,20 @@ export async function getServerSideProps(context: any) {
     }
 
     if (!isBot) {
-      await fetch("https://tuft-core-400170117812.asia-south1.run.app/internal/website_visit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          isBot,
-          userAgent,
-          deviceType,
-          referrer,
-          ip: clientIP,
-          timestamp: new Date().toISOString(),
-        }),
-      });
+      // await fetch("https://tuft-core-400170117812.asia-south1.run.app/internal/website_visit", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     isBot,
+      //     userAgent,
+      //     deviceType,
+      //     referrer,
+      //     ip: clientIP,
+      //     timestamp: new Date().toISOString(),
+      //   }),
+      // });
     }
   } catch (error) {
     console.error("Failed to record visit:", error);
