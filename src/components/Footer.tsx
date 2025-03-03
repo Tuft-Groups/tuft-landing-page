@@ -16,10 +16,6 @@ export default function Footer() {
             built for Creators
           </span>
           <div className="h-2.5" />
-          <div className="flex items-center gap-1">
-            <span>Made with ❤️ in India</span>
-          </div>
-          <div className="h-2.5" />
           <div className="flex gap-4 items-center">
             <a href={AppLinks.playstore_link}>
               <Image src={AppImages.playstore_download} alt="playstore" width={120} height={50} />
