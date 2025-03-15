@@ -16,28 +16,21 @@ export default function RoomPreview({ room }: { room: any }) {
   if (!room) return <div>Room not found</div>;
 
   return (
-    <div className="flex flex-col h-screen grow  max-w-[400px] m-auto ">
+    <div className="flex flex-col max-w-[400px] m-auto ">
       <div className="flex flex-col gap-4 h-full p-6">
-        <div className="h-full overflow-y-scroll">
-          <div className="relative mb-10">
-            {room.cover_image_url ? (
-              <img src={room.cover_image_url} alt="Room cover" className="w-full h-48 object-cover rounded-lg" />
-            ) : (
-              <div className="w-full h-16"></div>
-            )}
-            <div className="absolute -bottom-6 left-0">
-              <img
-                src={room.avatar || ""}
-                alt="Room logo"
-                className="size-20 rounded-full border-4 border-background"
-              />
-            </div>
+        <div className="relative mb-10">
+          {room.cover_image_url ? (
+            <img src={room.cover_image_url} alt="Room cover" className="w-full h-48 object-cover rounded-lg" />
+          ) : (
+            <div className="w-full h-16"></div>
+          )}
+          <div className="absolute -bottom-6 left-0">
+            <img src={room.avatar || ""} alt="Room logo" className="size-20 rounded-full border-4 border-background" />
           </div>
-
-          <div>
-            <h1 className="text-2xl font-bold">{room.name}</h1>
-            <ReactMarkdown>{room.description || room.short_description}</ReactMarkdown>
-          </div>
+        </div>
+        <div>
+          <h1 className="text-2xl font-bold">{room.name}</h1>
+          <ReactMarkdown>{room.description || room.short_description}</ReactMarkdown>
         </div>
         <div className="flex flex-col gap-2">
           <Button
