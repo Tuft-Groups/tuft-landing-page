@@ -3,7 +3,7 @@ import axios from "axios";
 import Head from "next/head";
 import ReactMarkdown from "react-markdown";
 
-// export const runtime = "experimental-edge";
+export const runtime = "experimental-edge";
 
 export async function getServerSideProps({ params }: { params: { id: string } }) {
   const room = await axios.get(`https://tuft-core-wq7gvvjxpa-el.a.run.app/rooms/${params.id}/preview`);
