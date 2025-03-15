@@ -1,4 +1,3 @@
-import { AppMeta } from "@/lib/constants";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Alexandria, Mulish } from "next/font/google";
@@ -21,6 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <div className={`${mulish.variable} ${alexandria.variable} min-h-screen flex flex-col font-mulish`}>
       <Head>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-4V7RECD9G6" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <script id="google-analytics">
           {`
           window.dataLayer = window.dataLayer || [];
