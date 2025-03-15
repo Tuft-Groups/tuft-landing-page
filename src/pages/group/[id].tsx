@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import axios from "axios";
+import Head from "next/head";
 import ReactMarkdown from "react-markdown";
 
-export const runtime = "experimental-edge";
+// export const runtime = "experimental-edge";
 
 export async function getServerSideProps({ params }: { params: { id: string } }) {
   const room = await axios.get(`https://tuft-core-wq7gvvjxpa-el.a.run.app/rooms/${params.id}/preview`);
@@ -17,7 +18,7 @@ export default function RoomPreview({ room }: { room: any }) {
 
   return (
     <>
-      <head>
+      <Head>
         <title>{room.name}</title>
         <meta name="description" content={room.short_description} />
         <link rel="icon" href={room.avatar} />
@@ -31,7 +32,7 @@ export default function RoomPreview({ room }: { room: any }) {
         <meta name="twitter:title" content={room.name} />
         <meta name="twitter:description" content={room.short_description} />
         <meta name="twitter:image" content={room.avatar} />
-      </head>
+      </Head>
       <div className="flex flex-col max-w-[400px] m-auto ">
         <div className="flex flex-col gap-4 h-full p-6">
           <div className="relative mb-10">
