@@ -60,7 +60,7 @@ export default function RoomPreview({ room }: { room: any }) {
                 window.location.href = "https://app.tuft.in/group/" + room.id;
               }}
             >
-              Join Room
+              Join Group
             </Button>
             <div className="flex items-center justify-center gap-2">
               <span className="text-muted-foreground text-xs">Powered by</span>
