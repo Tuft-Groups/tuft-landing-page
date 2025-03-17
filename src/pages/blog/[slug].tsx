@@ -13,7 +13,6 @@ export default function Post(props: {
     <>
       <style>
         {`
-
           #content * {
               font-size: 20px;
           }
@@ -25,6 +24,22 @@ export default function Post(props: {
           
           #content img {
             margin: 2.5rem 0;
+          }
+
+          #content ul {
+            list-style-type: disc;
+            margin: 1rem 0;
+            padding-left: 2rem;
+          }
+
+          #content ol {
+            list-style-type: decimal;
+            margin: 1rem 0;
+            padding-left: 2rem;
+          }
+
+          #content li {
+            margin: 0.5rem 0;
           }
         `}
       </style>
