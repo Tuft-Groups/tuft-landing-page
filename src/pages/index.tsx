@@ -4,61 +4,17 @@ import { AppImages, AppMeta } from "@/lib/constants";
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { trackPageVisit } from "@/utils/track-page-visit";
 
 export const runtime = "experimental-edge";
 
 export async function getServerSideProps(context: any) {
   const { req } = context;
 
-  try {
-    // Extract User-Agent and Referrer (with better fallback handling)
-    const userAgent = req.headers["user-agent"] || "";
-    const referrer =
-      req.headers["referer"] ||
-      req.headers["referrer"] ||
-      (req.headers.origin ? `Origin: ${req.headers.origin}` : "Direct Visit");
-
-    // Get IP address (checking multiple headers)
-    const ip = req.headers["x-forwarded-for"] || req.headers["x-real-ip"] || req.socket?.remoteAddress || "Unknown";
-
-    // Convert x-forwarded-for to string if it's an array
-    const clientIP = Array.isArray(ip) ? ip[0] : ip;
-
-    // Detect if the request is from a bot
-    const isBot = /bot|crawl|spider|slurp|facebookexternalhit|WhatsApp|Telegram/i.test(userAgent);
-
-    // Detect device type with more specific patterns
-    let deviceType = "Unknown";
-    if (/Mobile|Android|iPhone|iPad|iPod/i.test(userAgent)) {
-      deviceType = "Mobile";
-    } else if (/tablet|ipad|playbook|silk/i.test(userAgent)) {
-      deviceType = "Tablet";
-    } else if (/Windows|Macintosh|Linux/i.test(userAgent)) {
-      deviceType = "Desktop";
-    }
-
-    if (!isBot) {
-      await fetch("https://tuft-core-400170117812.asia-south1.run.app/internal/website_visit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          isBot,
-          userAgent,
-          deviceType,
-          referrer,
-          ip: clientIP,
-          timestamp: new Date().toISOString(),
-        }),
-      });
-    }
-  } catch (error) {
-    console.error("Failed to record visit:", error);
-  }
+  await trackPageVisit(req);
 
   return {
-    props: {}, // Return empty props since we don't need to pass data to the page
+    props: {},
   };
 }
 

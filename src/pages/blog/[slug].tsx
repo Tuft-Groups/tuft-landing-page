@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { trackPageVisit } from "@/utils/track-page-visit";
 import fs from "fs";
 import matter from "gray-matter";
 import Head from "next/head";
@@ -104,5 +105,15 @@ export async function getStaticProps({ params: { slug } }: any) {
         content: content,
       },
     },
+  };
+}
+
+export async function getServerSideProps(context: any) {
+  const { req } = context;
+
+  await trackPageVisit(req);
+
+  return {
+    props: {},
   };
 }
