@@ -107,13 +107,3 @@ export async function getStaticProps({ params: { slug } }: any) {
     },
   };
 }
-
-export async function getServerSideProps(context: any) {
-  const { req } = context;
-
-  await trackPageVisit(req);
-
-  return {
-    props: {},
-  };
-}
