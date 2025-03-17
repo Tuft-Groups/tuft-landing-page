@@ -15,6 +15,8 @@
    <url>
       <loc>https://tuft.in/pricing</loc>
    </url>
+
+   <!-- Blog -->
    <url>
       <loc>https://tuft.in/blog/levelup_your_coaching_academy_with_tuft</loc>
    </url>
@@ -44,5 +46,10 @@
    </url>
    <url>
       <loc>https://tuft.in/blog/upsc-study-group</loc>
+   </url>
+
+   <!-- Groups -->
+   <url>
+      <loc>https://tuft.in/group/43</loc>
    </url>
 </urlset>
