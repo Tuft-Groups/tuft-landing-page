@@ -103,4 +103,4 @@ As UPSC preparation becomes increasingly competitive, the efficiency of study gr
 
 By eliminating the limitations of traditional messaging platforms, Tuft creates an ecosystem specifically optimized for educational communities like UPSC study groups. The result is a more focused, organized, and effective preparation experience for everyone involved.
 
-Ready to transform your UPSC study group? Try Tuft today and experience the difference that proper organization makes in competitive exam preparation.
+Ready to transform your UPSC study group? [Try Tuft today](https://app.tuft.in) and experience the difference that proper organization makes in competitive exam preparation.
