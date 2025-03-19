@@ -1,7 +1,7 @@
 ---
 title: "UPSC Study Group Management: How Tuft Transforms the Experience"
 desc: "Managing a community is not an easy task, but it can be a rewarding experience if done correctly."
-date: "11th Aug, 2023"
+date: "17th March, 2025"
 cover_image: /assets/blog_images/upsc-study-group/cover_photo.png
 ---
 
