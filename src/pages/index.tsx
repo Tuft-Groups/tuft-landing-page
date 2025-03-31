@@ -20,10 +20,10 @@ export async function getServerSideProps(context: any) {
 
 export default function Home() {
   const targetAudience = [
+    { text: "Study Clubs", color: "#FFE262" },
     { text: "Colleges", color: "#FFE262" },
     { text: "YouTubers", color: "#FFE262" },
     { text: "Schools", color: "#FFE262" },
-    { text: "Study Clubs", color: "#FFE262" },
   ];
 
   const basicFeatures = [
