@@ -33,8 +33,9 @@ export default function RoomPreview({ room }: { room: any }) {
         <meta name="twitter:title" content={room.name} />
         <meta name="twitter:description" content={room.short_description} />
         <meta name="twitter:image" content={room.avatar} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <div className="flex flex-col max-w-[400px] m-auto h-screen">
+      <div className="flex flex-col max-w-[400px] m-auto h-[100dvh]">
         <div className="flex flex-col gap-4 h-full p-6">
           <div className="relative mb-10">
             {room.cover_image_url ? (
