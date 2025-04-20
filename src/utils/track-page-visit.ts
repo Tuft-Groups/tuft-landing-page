@@ -6,7 +6,7 @@ interface VisitData {
   url: string;
   ip: string;
   timestamp: string;
-  trackingCode: string;
+  trackingCode: string | null;
 }
 
 export async function trackPageVisit(req: any): Promise<void> {
@@ -44,7 +44,7 @@ export async function trackPageVisit(req: any): Promise<void> {
         url: req.url,
         ip: clientIP,
         timestamp: new Date().toISOString(),
-        trackingCode: req.query.t,
+        trackingCode: new URLSearchParams(req.url.split("?")[1]).get("t"),
       };
 
       await fetch("https://tuft-core-400170117812.asia-south1.run.app/internal/website_visit", {
