@@ -22,4 +22,4 @@ Building tech for your community takes a lot of time and effort. It can be a cha
 
 By leveraging the power of technology through tools like [Tuft](https://tuft.in), you can focus on growing and nurturing your community, rather than getting bogged down with administrative tasks. Embrace the digital age and transform your community into a tech-enabled powerhouse to foster stronger connections, streamline operations, and enhance member engagement.
 
-Tuft is a powerful platform for managing online communities, with features like Feed, Chat, Files, Rooms, Payments, Members, and Analytics. It's completely free to start, so what are you waiting for? Download Tuft today and experience seamless community management like never before.
+Tuft is a powerful platform for managing online communities, with features like Feed, Chat, Files, Payments, Members, and Analytics. It's completely free to start, so what are you waiting for? Download Tuft today and experience seamless community management like never before.

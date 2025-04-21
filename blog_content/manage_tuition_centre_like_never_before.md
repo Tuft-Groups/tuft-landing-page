@@ -9,7 +9,7 @@ In today's fast-paced, interconnected world, effective communication is a critic
 
 ### **Introducing Tuft**
 
-Tuft is a comprehensive platform designed specifically for online community management. It boasts a wide array of features tailored to the needs of community managers, including Feed, Chat, Files, Rooms, Payments, Members, and Analytics. With Tuft, you can create and manage online communities of any size or scope, ranging from small student clubs to extensive non-profit organisations.
+Tuft is a comprehensive platform designed specifically for online community management. It boasts a wide array of features tailored to the needs of community managers, including Feed, Chat, Files, Payments, Members, and Analytics. With Tuft, you can create and manage online communities of any size or scope, ranging from small student clubs to extensive non-profit organisations.
 
 ### **The Limitations of WhatsApp**
 

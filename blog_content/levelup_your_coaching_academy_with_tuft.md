@@ -37,7 +37,7 @@ Discover five ways Tuft can revolutionize your coaching academy:
 
    Managing multiple courses and batches within a coaching academy can be daunting. Traditional organizational methods often fail to provide an efficient and structured system for managing the academy as a whole, leading to inefficiencies and miscommunications.
 
-   Tuft's Rooms feature enables you to arrange your entire academy hierarchically, providing an overarching view of all classes and facilitating seamless communication across the institution. This structured organization allows the academy head to monitor each class's progress and quickly send announcements to the entire academy with a single click.
+   Tuft's Groups feature enables you to arrange your entire academy hierarchically, providing an overarching view of all classes and facilitating seamless communication across the institution. This structured organization allows the academy head to monitor each class's progress and quickly send announcements to the entire academy with a single click.
 
 Tuft's comprehensive suite of features has the potential to revolutionise your coaching center, providing you with a competitive edge in today's rapidly evolving educational landscape. By addressing common challenges and streamlining processes, Tuft empowers you to focus on what truly matters: offering a superior learning experience for your students.
 

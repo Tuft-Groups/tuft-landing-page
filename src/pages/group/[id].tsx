@@ -7,62 +7,62 @@ import ReactMarkdown from "react-markdown";
 export const runtime = "experimental-edge";
 
 export async function getServerSideProps({ params }: { params: { id: string } }) {
-  const room = await axios.get(`https://tuft-core-wq7gvvjxpa-el.a.run.app/rooms/${params.id}/preview`);
+  const group = await axios.get(`https://tuft-core-wq7gvvjxpa-el.a.run.app/groups/${params.id}/preview`);
 
   return {
-    props: { room: room.data.data },
+    props: { group: group.data.data },
   };
 }
 
-export default function RoomPreview({ room }: { room: any }) {
-  if (!room) return <div>Room not found</div>;
+export default function GroupPreview({ group }: { group: any }) {
+  if (!group) return <div>Group not found</div>;
 
   return (
     <>
       <Head>
-        <title>{room.name}</title>
-        <meta name="description" content={room.short_description} />
-        <link rel="icon" href={room.avatar} />
+        <title>{group.name}</title>
+        <meta name="description" content={group.short_description} />
+        <link rel="icon" href={group.avatar} />
 
-        <meta property="og:title" content={room.name} />
-        <meta property="og:description" content={room.short_description} />
-        <meta property="og:image" content={room.avatar} />
+        <meta property="og:title" content={group.name} />
+        <meta property="og:description" content={group.short_description} />
+        <meta property="og:image" content={group.avatar} />
         <meta property="og:type" content="website" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={room.name} />
-        <meta name="twitter:description" content={room.short_description} />
-        <meta name="twitter:image" content={room.avatar} />
+        <meta name="twitter:title" content={group.name} />
+        <meta name="twitter:description" content={group.short_description} />
+        <meta name="twitter:image" content={group.avatar} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div className="flex flex-col max-w-[400px] m-auto h-[100dvh]">
         <div className="flex flex-col gap-4 h-full p-6">
           <div className="relative mb-10">
-            {room.cover_image_url ? (
-              <img src={room.cover_image_url} alt="Room cover" className="w-full h-48 object-cover rounded-lg" />
+            {group.cover_image_url ? (
+              <img src={group.cover_image_url} alt="Group cover" className="w-full h-48 object-cover rounded-lg" />
             ) : (
               <div className="w-full h-16"></div>
             )}
             <div className="absolute -bottom-6 left-0">
               <img
-                src={room.avatar || NO_AVATAR_IMAGE}
-                alt="Room logo"
+                src={group.avatar || NO_AVATAR_IMAGE}
+                alt="Group logo"
                 className="size-20 rounded-full border-2 border-primary"
               />
             </div>
           </div>
           <div className="flex flex-col gap-2 grow">
-            <h1 className="text-2xl font-bold">{room.name}</h1>
-            <ReactMarkdown>{room.description || room.short_description}</ReactMarkdown>
+            <h1 className="text-2xl font-bold">{group.name}</h1>
+            <ReactMarkdown>{group.description || group.short_description}</ReactMarkdown>
           </div>
           <div className="flex flex-col gap-2">
             <Button
               className="w-full"
               onClick={() => {
-                window.location.href = "https://app.tuft.in/group/" + room.id;
+                window.location.href = "https://app.tuft.in/group/" + group.id;
               }}
             >
-              Join Group {room.amount ? `for ₹${room.amount}` : ""}
+              Join Group {group.amount ? `for ₹${group.amount}` : ""}
             </Button>
             <div className="flex items-center justify-center gap-2">
               <span className="text-muted-foreground text-xs">Powered by</span>

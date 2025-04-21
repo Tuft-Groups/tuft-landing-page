@@ -28,7 +28,7 @@ Here’s a rundown of what makes Tuft’s Meetings a standout addition to your c
 
 ### Security and Control
 
-- **Exclusive Access**: Your meetings stay private with robust security measures, so only the right people are in the room.
+- **Exclusive Access**: Your meetings stay private with robust security measures, so only the right people are in the group.
 - **Integrated Experience**: Meetings don’t stand alone—they sync effortlessly with Tuft’s Chat, Feed, and Files, keeping follow-ups and resources all in one place.
 
 ## How Tuft’s Meetings Stacks Up
