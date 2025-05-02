@@ -1,11 +1,17 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { trackPageVisit } from "@/utils/track-page-visit";
 import Head from "next/head";
-import { useState } from "react";
+
+export const runtime = "experimental-edge";
+
+export async function getServerSideProps(context: any) {
+  const { req } = context;
+  await trackPageVisit(req);
+  return { props: {} };
+}
 
 export default function Blog() {
-  const [hoveredIndex, setHoveredIndex] = useState(0);
-
   return (
     <>
       <Head>

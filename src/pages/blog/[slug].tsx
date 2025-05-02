@@ -75,28 +75,16 @@ export default function Post(props: {
   );
 }
 
-export async function getStaticPaths() {
-  const files = fs.readdirSync(path.join("blog_content"));
+export async function getServerSideProps(context: any) {
+  const { params, req } = context;
+  const { slug } = params;
 
-  const paths = files.map((filename) => ({
-    params: {
-      slug: filename.replace(".md", ""),
-    },
-  }));
+  // Track page visit
+  await trackPageVisit(req);
 
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params: { slug } }: any) {
   const markdownWithMeta = fs.readFileSync(path.join("blog_content", slug + ".md"), "utf-8");
 
   const { data: frontmatter, content } = matter(markdownWithMeta);
-
-  // const result = await remark().use(html).process(content);
-  // const contentHtml = result.toString();
 
   return {
     props: {

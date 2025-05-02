@@ -1,21 +1,17 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { AppImages, AppMeta } from "@/lib/constants";
+import { trackPageVisit } from "@/utils/track-page-visit";
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { trackPageVisit } from "@/utils/track-page-visit";
 
 export const runtime = "experimental-edge";
 
 export async function getServerSideProps(context: any) {
   const { req } = context;
-
   await trackPageVisit(req);
-
-  return {
-    props: {},
-  };
+  return { props: {} };
 }
 
 export default function Home() {

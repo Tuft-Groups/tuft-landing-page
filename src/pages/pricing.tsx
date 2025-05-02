@@ -2,8 +2,17 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { AppImages } from "@/lib/constants";
+import { trackPageVisit } from "@/utils/track-page-visit";
 import Head from "next/head";
 import Image from "next/image";
+
+export const runtime = "experimental-edge";
+
+export async function getServerSideProps(context: any) {
+  const { req } = context;
+  await trackPageVisit(req);
+  return { props: {} };
+}
 
 export default function Pricing() {
   return (
