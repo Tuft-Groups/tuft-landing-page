@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { trackPageVisit } from "@/utils/track-page-visit";
 import fs from "fs";
 import matter from "gray-matter";
 import Head from "next/head";
@@ -8,36 +9,6 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 export const runtime = "experimental-edge";
-
-export async function getStaticPaths() {
-  const files = fs.readdirSync(path.join(process.cwd(), "blog_content"));
-  const paths = files.map((filename) => ({
-    params: {
-      slug: filename.replace(".md", ""),
-    },
-  }));
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-  const markdownWithMeta = fs.readFileSync(path.join(process.cwd(), "blog_content", `${slug}.md`), "utf-8");
-
-  const { data: frontmatter, content } = matter(markdownWithMeta);
-
-  return {
-    props: {
-      post: {
-        ...frontmatter,
-        content,
-      },
-    },
-  };
-}
 
 export default function Post(props: {
   post: { title: string; desc: string; content: string; cover_image: string; date: string };
@@ -130,4 +101,37 @@ export default function Post(props: {
       <Footer />
     </>
   );
+}
+
+export async function getStaticPaths() {
+  const files = fs.readdirSync(path.join("blog_content"));
+
+  const paths = files.map((filename) => ({
+    params: {
+      slug: filename.replace(".md", ""),
+    },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params: { slug } }: any) {
+  const markdownWithMeta = fs.readFileSync(path.join("blog_content", slug + ".md"), "utf-8");
+
+  const { data: frontmatter, content } = matter(markdownWithMeta);
+
+  // const result = await remark().use(html).process(content);
+  // const contentHtml = result.toString();
+
+  return {
+    props: {
+      post: {
+        ...frontmatter,
+        content: content,
+      },
+    },
+  };
 }
