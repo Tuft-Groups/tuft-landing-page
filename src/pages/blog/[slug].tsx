@@ -1,6 +1,5 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { trackPageVisit } from "@/utils/track-page-visit";
 import fs from "fs";
 import matter from "gray-matter";
 import Head from "next/head";
@@ -10,14 +9,23 @@ import remarkGfm from "remark-gfm";
 
 export const runtime = "experimental-edge";
 
-export async function getServerSideProps(context: any) {
-  const { params, req } = context;
+export async function getStaticPaths() {
+  const files = fs.readdirSync(path.join(process.cwd(), "blog_content"));
+  const paths = files.map((filename) => ({
+    params: {
+      slug: filename.replace(".md", ""),
+    },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }: { params: { slug: string } }) {
   const { slug } = params;
-
-  // Track page visit
-  await trackPageVisit(req);
-
-  const markdownWithMeta = fs.readFileSync(path.join("blog_content", slug + ".md"), "utf-8");
+  const markdownWithMeta = fs.readFileSync(path.join(process.cwd(), "blog_content", `${slug}.md`), "utf-8");
 
   const { data: frontmatter, content } = matter(markdownWithMeta);
 
@@ -25,7 +33,7 @@ export async function getServerSideProps(context: any) {
     props: {
       post: {
         ...frontmatter,
-        content: content,
+        content,
       },
     },
   };
