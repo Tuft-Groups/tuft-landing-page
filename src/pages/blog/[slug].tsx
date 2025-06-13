@@ -1,16 +1,33 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { trackPageVisit } from "@/utils/track-page-visit";
 import fs from "fs";
 import matter from "gray-matter";
 import Head from "next/head";
 import path from "path";
+import { useEffect } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 export default function Post(props: {
   post: { title: string; desc: string; content: string; cover_image: string; date: string };
 }) {
+  useEffect(() => {
+    const trackVisit = async () => {
+      try {
+        await fetch("/api/track-visit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+      } catch (error) {
+        console.error("Failed to track page visit:", error);
+      }
+    };
+
+    trackVisit();
+  }, []);
+
   return (
     <>
       <style>
