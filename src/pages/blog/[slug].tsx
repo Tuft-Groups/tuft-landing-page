@@ -8,6 +8,29 @@ import path from "path";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+export const runtime = "edge";
+
+export async function getServerSideProps(context: any) {
+  const { params, req } = context;
+  const { slug } = params;
+
+  // Track page visit
+  await trackPageVisit(req);
+
+  const markdownWithMeta = fs.readFileSync(path.join("blog_content", slug + ".md"), "utf-8");
+
+  const { data: frontmatter, content } = matter(markdownWithMeta);
+
+  return {
+    props: {
+      post: {
+        ...frontmatter,
+        content: content,
+      },
+    },
+  };
+}
+
 export default function Post(props: {
   post: { title: string; desc: string; content: string; cover_image: string; date: string };
 }) {
@@ -99,25 +122,4 @@ export default function Post(props: {
       <Footer />
     </>
   );
-}
-
-export async function getServerSideProps(context: any) {
-  const { params, req } = context;
-  const { slug } = params;
-
-  // Track page visit
-  await trackPageVisit(req);
-
-  const markdownWithMeta = fs.readFileSync(path.join("blog_content", slug + ".md"), "utf-8");
-
-  const { data: frontmatter, content } = matter(markdownWithMeta);
-
-  return {
-    props: {
-      post: {
-        ...frontmatter,
-        content: content,
-      },
-    },
-  };
 }
