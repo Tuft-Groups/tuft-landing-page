@@ -8,7 +8,7 @@ import path from "path";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-export const runtime = "edge";
+export const runtime = "experimental-edge";
 
 export async function getServerSideProps(context: any) {
   const { params, req } = context;
