@@ -89,6 +89,12 @@ const blogs = [
     cover_photo: "assets/blog_images/upsc-study-group/cover_photo.png",
     link: "/upsc-study-group",
   },
+  {
+    title: "Google Drive Alternative: Tuft Folder Link",
+    date: "13th Jun, 2025",
+    cover_photo: "assets/blog_images/google-drive-alternative/cover_photo.png",
+    link: "/google-drive-alternative",
+  },
   // {
   //   title: "Level up your coaching academy with Tuft.",
   //   date: "15th Aug, 2023",

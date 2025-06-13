@@ -6,6 +6,7 @@ import matter from "gray-matter";
 import Head from "next/head";
 import path from "path";
 import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export default function Post(props: {
   post: { title: string; desc: string; content: string; cover_image: string; date: string };
@@ -42,6 +43,31 @@ export default function Post(props: {
           #content li {
             margin: 0.5rem 0;
           }
+
+          #content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+          }
+
+          #content th, #content td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+          }
+
+          #content th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+          }
+
+          #content tr:nth-child(even) {
+            background-color: #f9f9f9;
+          }
+
+          #content tr:hover {
+            background-color: #f5f5f5;
+          }
         `}
       </style>
       <Head>
@@ -66,7 +92,7 @@ export default function Post(props: {
 
         <img src={props.post.cover_image} alt="cover_photo" sizes="100vw" className="object-cover mx-auto mb-10" />
         <div id="content" className={`py-[1vh] `}>
-          <Markdown>{props.post.content}</Markdown>
+          <Markdown remarkPlugins={[remarkGfm]}>{props.post.content}</Markdown>
         </div>
       </main>
 
