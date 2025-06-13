@@ -8,8 +8,6 @@ import path from "path";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-export const runtime = "experimental-edge";
-
 export default function Post(props: {
   post: { title: string; desc: string; content: string; cover_image: string; date: string };
 }) {
