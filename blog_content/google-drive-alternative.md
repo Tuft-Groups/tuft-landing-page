@@ -82,5 +82,4 @@ Tuft makes the switch seamless and rewarding.
 
 Ready to transform how you share and connect?
 
-[Start sharing smarter with Tuft. Create Your First Folder today!]
-[Talk to Us / Book a Demo to learn more about how Tuft can benefit your specific needs.]
+[Start sharing smarter with Tuft. Create Your First Folder today!](https://app.tuft.in)
