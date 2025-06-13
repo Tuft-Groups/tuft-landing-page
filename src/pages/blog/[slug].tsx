@@ -65,6 +65,13 @@ export default function Post(props: {
             width: 100%;
             border-collapse: collapse;
             margin: 1.5rem 0;
+            max-width: 100%;
+          }
+
+          #content .table-container {
+            max-width: 85vw;
+            overflow-x: scroll;
+            margin: 1.5rem 0;
           }
 
           #content th, #content td {
@@ -109,7 +116,18 @@ export default function Post(props: {
 
         <img src={props.post.cover_image} alt="cover_photo" sizes="100vw" className="object-cover mx-auto mb-10" />
         <div id="content" className={`py-[1vh] `}>
-          <Markdown remarkPlugins={[remarkGfm]}>{props.post.content}</Markdown>
+          <Markdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              table: ({ node, ...props }) => (
+                <div className="table-container">
+                  <table {...props} />
+                </div>
+              ),
+            }}
+          >
+            {props.post.content}
+          </Markdown>
         </div>
       </main>
 
