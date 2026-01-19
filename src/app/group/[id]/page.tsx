@@ -1,11 +1,9 @@
-import { Metadata } from "next";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import ReactMarkdown from "react-markdown";
 import { NO_AVATAR_IMAGE } from "@/lib/constants";
-import { notFound } from "next/navigation";
+import { Metadata } from "next";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import ReactMarkdown from "react-markdown";
+
+export const runtime = "edge";
 
 // Define the interface for the group data
 interface Group {
