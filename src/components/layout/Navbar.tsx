@@ -40,7 +40,7 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://tuft.in/assets/images/short_logo.png"
+            src="/assets/images/short_logo.png"
             alt="Tuft Logo"
             className="w-8 h-8 object-contain drop-shadow-[0_0_15px_rgba(150,93,188,0.6)] rounded-sm"
           />
