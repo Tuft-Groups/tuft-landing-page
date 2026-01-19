@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   title: "Tuft - All-in-One Community Platform",
   description:
     "Streamline your community with Tuft's comprehensive tools for organized communication, file sharing, payments, and analytics. Perfect for educators, webinar hosts, and content creators.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   openGraph: {
     title: "Tuft - All-in-One Community Platform",
     description:
