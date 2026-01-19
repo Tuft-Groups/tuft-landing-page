@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { CustomCursor, NoiseOverlay } from "@/components/ui/BackgroundElements";
 import { Starfield } from "@/components/ui/Starfield";
+import Script from "next/script";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -10,16 +11,16 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Tuft Groups | The Community OS",
-  description: "The all-in-one professional operating system for creators to host files, run meetings, and automate revenue.",
+  title: "Tuft - All-in-One Community Platform",
+  description:
+    "Streamline your community with Tuft's comprehensive tools for organized communication, file sharing, payments, and analytics. Perfect for educators, webinar hosts, and content creators.",
   openGraph: {
-    title: "Tuft Groups | The Community OS",
-    description: "Own Your Community. The all-in-one professional operating system for creators.",
-    images: ["https://tuft.in/assets/images/short_logo.png"],
+    title: "Tuft - All-in-One Community Platform",
+    description:
+      "Streamline your community with Tuft's comprehensive tools for organized communication, file sharing, payments, and analytics. Perfect for educators, webinar hosts, and content creators.",
+    images: ["https://tuft.in/og-image.png"],
   },
 };
-
-import Script from "next/script";
 
 export default function RootLayout({
   children,
