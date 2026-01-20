@@ -24,6 +24,14 @@ export function Features() {
   const smoothIndex = useSpring(rawIndex, { stiffness: 60, damping: 20, mass: 0.5 });
 
   const [activeStep, setActiveStep] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile(); // Check on mount
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Sync active step for text logic
   useEffect(() => {
@@ -67,7 +75,7 @@ export function Features() {
 
         <div className="max-w-7xl w-full mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 h-full items-center relative z-10">
           {/* --- Left Column: Dynamic Text --- */}
-          <div className="order-2 md:order-1 flex flex-col justify-center min-h-[400px]">
+          <div className="order-1 md:order-1 flex flex-col justify-start pt-28 md:justify-center md:pt-0 min-h-auto md:min-h-[400px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeFeature.id}
@@ -123,10 +131,10 @@ export function Features() {
           </div>
 
           {/* --- Right Column: 3D Carousel --- */}
-          <div className="order-1 md:order-2 relative h-[500px] md:h-full w-full flex items-center justify-center -mr-20 group perspective-container">
+          <div className="order-2 md:order-2 relative h-[500px] md:h-full w-full flex items-center justify-center -mr-20 group perspective-container">
             {/* Scene Container */}
-            <div className="relative w-[300px] h-[600px]" style={{ perspective: "1200px", transformStyle: "preserve-3d" }}>
-              <CarouselRing scrollIndex={smoothIndex} />
+            <div className="relative w-[300px] h-[450px] md:h-[600px]" style={{ perspective: "1200px", transformStyle: "preserve-3d" }}>
+              <CarouselRing scrollIndex={smoothIndex} isMobile={isMobile} />
             </div>
 
             {/* Navigation Buttons (Hover Only) */}
@@ -153,17 +161,27 @@ export function Features() {
   );
 }
 
-function CarouselRing({ scrollIndex }: { scrollIndex: MotionValue<number> }) {
+function CarouselRing({ scrollIndex, isMobile }: { scrollIndex: MotionValue<number>; isMobile: boolean }) {
   return (
     <motion.div className="relative w-full h-full" style={{ transformStyle: "preserve-3d" }}>
       {FEATURE_DATA.map((feature, index) => (
-        <CarouselItem key={feature.id} feature={feature} index={index} scrollIndex={scrollIndex} />
+        <CarouselItem key={feature.id} feature={feature} index={index} scrollIndex={scrollIndex} isMobile={isMobile} />
       ))}
     </motion.div>
   );
 }
 
-function CarouselItem({ feature, index, scrollIndex }: { feature: Feature; index: number; scrollIndex: MotionValue<number> }) {
+function CarouselItem({
+  feature,
+  index,
+  scrollIndex,
+  isMobile,
+}: {
+  feature: Feature;
+  index: number;
+  scrollIndex: MotionValue<number>;
+  isMobile: boolean;
+}) {
   // Calculate properties based on scrollIndex
   // We want the item to be at `angle = (index - scrollIndex) * STEP`
 
@@ -211,19 +229,15 @@ function CarouselItem({ feature, index, scrollIndex }: { feature: Feature; index
         scale,
         filter: useTransform(brightness, (b) => `brightness(${b})`),
         position: "absolute",
-        width: 320,
-        height: 650,
-        left: "calc(50% - 160px)",
-        top: "calc(50% - 325px)",
+        width: isMobile ? 220 : 320,
+        height: isMobile ? 440 : 650,
+        left: isMobile ? "calc(50% - 110px)" : "calc(50% - 160px)",
+        top: isMobile ? "calc(50% - 220px)" : "calc(50% - 325px)",
       }}
-      className="rounded-[40px] overflow-hidden shadow-2xl border-[4px] border-[#222] bg-black"
     >
-      <div className="absolute inset-0 bg-zinc-900">
+      <div className="absolute">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={feature.mockup} alt={feature.titleFirst} className="w-full h-full object-cover" />
-
-        {/* Glossy reflection overlay */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-30 pointer-events-none" />
       </div>
     </motion.div>
   );

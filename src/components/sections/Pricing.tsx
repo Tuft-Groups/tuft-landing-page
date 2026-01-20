@@ -16,7 +16,7 @@ export function Pricing() {
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   const y = useTransform(smoothProgress, [0, 0.5], [100, 0]);
@@ -39,13 +39,9 @@ export function Pricing() {
       />
 
       <div className="max-w-4xl mx-auto w-full relative z-10">
-        <motion.div
-          style={{ y, opacity, scale }}
-          className="relative"
-        >
+        <motion.div style={{ y, opacity, scale }} className="relative">
           {/* Glass Console Card */}
-          <div className="glass-card rounded-[3rem] md:rounded-[4rem] p-10 md:p-16 border border-white/10 relative overflow-hidden group">
-
+          <div className="glass-card rounded-3xl md:rounded-[4rem] p-8 md:p-16 border border-white/10 relative overflow-hidden group">
             {/* Ambient Glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-tuft-purple/20 blur-[80px] rounded-full pointer-events-none" />
 
@@ -69,7 +65,10 @@ export function Pricing() {
 
               {/* Main Headline */}
               <h2 className="text-5xl md:text-8xl font-bold tracking-tighter text-white mb-6">
-                Start for <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70 drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]">₹0</span>
+                Start for{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70 drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]">
+                  ₹0
+                </span>
               </h2>
 
               <p className="text-lg md:text-xl text-slate-400 font-light max-w-lg mx-auto mb-10 leading-relaxed">

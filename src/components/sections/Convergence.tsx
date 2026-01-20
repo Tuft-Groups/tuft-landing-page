@@ -110,8 +110,8 @@ export function Convergence() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const titleScale = useTransform(scrollYProgress, [0.1, 0.9], [1.5, 0]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.8, 0.9], [1, 1, 0]);
+  const titleScale = useTransform(scrollYProgress, [0.1, 0.6], [1.5, 0.5]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.2, 0.4], [1, 1, 0]);
   const subtitleOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
 
   return (
@@ -124,7 +124,7 @@ export function Convergence() {
 
         <motion.div style={{ opacity: titleOpacity, scale: titleScale }} className="z-10 text-center max-w-5xl relative mb-16">
           <div className="absolute inset-0 bg-tuft-purple/10 blur-[100px] -z-10 rounded-full"></div>
-          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter leading-none text-white px-4 drop-shadow-2xl">
+          <h2 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none text-white px-4 drop-shadow-2xl">
             Everything you need.
           </h2>
         </motion.div>
@@ -160,9 +160,9 @@ function FeatureItem({
   const rowCount = isMobile ? 4 : 2;
 
   // Optimized spacing for new larger card sizes
-  // Card Sizes: Mobile ~160px, Desktop ~220px
-  const spacingX = isMobile ? 170 : 250;
-  const spacingY = isMobile ? 170 : 250;
+  // Card Sizes: Mobile ~145px, Desktop ~220px
+  const spacingX = isMobile ? 155 : 250;
+  const spacingY = isMobile ? 155 : 250;
 
   const row = Math.floor(index / colCount);
   const col = index % colCount;
@@ -187,7 +187,7 @@ function FeatureItem({
     <motion.div style={{ x, y, scale, opacity, zIndex: index + 20 }} className="absolute">
       <div
         className={`
-        w-[160px] h-[160px] md:w-[220px] md:h-[220px]
+        w-[145px] h-[145px] md:w-[220px] md:h-[220px]
         rounded-3xl
         border-[1.5px]
         backdrop-blur-xl

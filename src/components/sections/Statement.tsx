@@ -26,9 +26,9 @@ export function Statement() {
 
         <motion.div
           style={{ scale: cardScale }}
-          className="w-full max-w-[1200px] mx-auto p-12 md:p-32 rounded-[3.5rem] text-center relative overflow-hidden transition-all duration-700 backdrop-blur-sm border border-white/5 bg-white/[0.01] shadow-[0_50px_100px_-20px_rgba(150,93,188,0.1)]"
+          className="w-full max-w-[1200px] mx-auto p-6 md:p-32 rounded-3xl md:rounded-[3.5rem] text-center relative overflow-hidden transition-all duration-700 backdrop-blur-sm border border-white/5 bg-white/1 shadow-[0_50px_100px_-20px_rgba(150,93,188,0.1)]"
         >
-          <h2 className="text-5xl md:text-8xl lg:text-9xl font-bold mb-12 tracking-tighter leading-[0.9] text-metallic">
+          <h2 className="text-4xl md:text-8xl lg:text-9xl font-bold mb-12 tracking-tighter leading-[0.9] text-metallic">
             The End of <br />
             <span className="gradient-text-premium blur-[0.5px]">Admin Hell.</span>
           </h2>

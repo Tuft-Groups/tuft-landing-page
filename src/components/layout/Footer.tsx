@@ -45,13 +45,18 @@ export function Footer() {
           <div className="space-y-8">
             <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-slate-400">Product</h4>
             <ul className="space-y-5">
-              {["Features", "Pricing", "Security", "Web App"].map((link) => (
-                <li key={link}>
+              {[
+                { name: "Features", href: "/features" },
+                { name: "Pricing", href: "/#pricing" },
+                { name: "Blog", href: "/blog" },
+                { name: "Web App", href: "https://app.tuft.in" },
+              ].map((link) => (
+                <li key={link.name}>
                   <Link
-                    href={link === "Web App" ? "https://app.tuft.in" : `#${link.toLowerCase()}`}
+                    href={link.href}
                     className="text-slate-500 hover:text-white transition-all text-sm font-semibold tap-active inline-block hover:translate-x-1"
                   >
-                    {link}
+                    {link.name}
                   </Link>
                 </li>
               ))}
