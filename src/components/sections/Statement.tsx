@@ -35,8 +35,8 @@ export function Statement() {
 
           <motion.div style={{ opacity: textOpacity, y: textY }}>
             <p className="text-xl md:text-2xl text-slate-300 font-light leading-relaxed max-w-4xl mx-auto">
-              Replace the noise of WhatsApp and the chaos of fragmented tools with{" "}
-              <span className="text-white font-medium">absolute clarity</span>.
+              Tuft gives admins one structured workspace to manage members, announcements, resources, discussions, and events—without
+              confusion or overload.
               <span className="block mt-8 text-tuft-purple text-xs font-bold tracking-[0.3em] uppercase">Begin with clarity</span>
             </p>
           </motion.div>
