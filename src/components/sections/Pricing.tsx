@@ -60,7 +60,7 @@ export function Pricing() {
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
               >
                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
-                <span className="text-xs uppercase tracking-[0.2em] font-medium text-slate-300">Beta Access Live</span>
+                <span className="text-xs uppercase tracking-[0.2em] font-medium text-slate-300">15k+ Active Users</span>
               </motion.div>
 
               {/* Main Headline */}
@@ -69,11 +69,14 @@ export function Pricing() {
                 <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70 drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]">
                   ₹0
                 </span>
+                <span className="text-4xl align-top text-slate-500">*</span>
               </h2>
 
               <p className="text-lg md:text-xl text-slate-400 font-light max-w-lg mx-auto mb-10 leading-relaxed">
                 Join the platform designed for modern leaders.
                 <br className="hidden md:block" /> Experience everything without limits.
+                <br />
+                <span className="text-sm text-slate-500 mt-2 block">* under fair usage policy</span>
               </p>
 
               {/* Trust Signals */}
@@ -85,7 +88,7 @@ export function Pricing() {
                 <div className="w-1 h-1 rounded-full bg-white/10 hidden md:block" />
                 <div className="flex items-center gap-2">
                   <Zap className="w-5 h-5 text-amber-300/80" />
-                  <span>Unlimited features during beta</span>
+                  <span>Unlimited features forever</span>
                 </div>
                 <div className="w-1 h-1 rounded-full bg-white/10 hidden md:block" />
                 <div className="flex items-center gap-2">
