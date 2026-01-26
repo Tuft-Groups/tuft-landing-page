@@ -60,7 +60,7 @@ export function Navbar() {
           <Link href="/#use-cases" className="hover:text-white transition-colors duration-300">
             Use Cases
           </Link>
-          <Link href="/#pricing" className="hover:text-white transition-colors duration-300">
+          <Link href="/pricing" className="hover:text-white transition-colors duration-300">
             Pricing
           </Link>
         </div>
