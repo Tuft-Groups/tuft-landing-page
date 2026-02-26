@@ -19,7 +19,7 @@ interface Blog {
 
 async function getPost(slug: string): Promise<Blog | null> {
   try {
-    const res = await fetch("http://localhost:8080/blogs/slug/" + slug, {
+    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/blogs/slug/" + slug, {
       next: { revalidate: 3600 },
     });
 
