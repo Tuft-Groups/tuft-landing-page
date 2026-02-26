@@ -1,28 +1,28 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { CreatorsHero } from "@/components/sections/creators/CreatorsHero";
-import { CreatorsProblem } from "@/components/sections/creators/CreatorsProblem";
+import { YoutubeHero } from "@/components/sections/creators/YoutubeHero";
+import { YoutubeProblem } from "@/components/sections/creators/YoutubeProblem";
 import { CreatorsSolution } from "@/components/sections/creators/CreatorsSolution";
-import { InstagramDetailedFeatures } from "@/components/sections/creators/InstagramDetailedFeatures";
+import { YoutubeDetailedFeatures } from "@/components/sections/creators/YoutubeDetailedFeatures";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tuft for Instagram Creators | Build & Own Your Community",
+  title: "Tuft for YouTube Creators | Build & Own Your Community",
   description:
-    "Tired of the Instagram algorithm? Tuft helps creators build owned communities, host exclusive content, and monetize their audience without the noise.",
-  keywords: ["Instagram creators", "creator economy", "community platform", "monetize audience", "Tuft"],
+    "Tired of relying on AdSense and the YouTube algorithm? Tuft helps creators build owned communities, host exclusive content, and monetize their audience freely.",
+  keywords: ["YouTube creators", "creator economy", "community platform", "monetize audience", "Tuft"],
   openGraph: {
-    title: "Tuft for Instagram Creators | Build & Own Your Community",
+    title: "Tuft for YouTube Creators | Build & Own Your Community",
     description:
-      "Tired of the Instagram algorithm? Tuft helps creators build owned communities, host exclusive content, and monetize their audience without the noise.",
-    url: "https://tuft.in/ig",
+      "Tired of relying on AdSense and the YouTube algorithm? Tuft helps creators build owned communities, host exclusive content, and monetize their audience freely.",
+    url: "https://tuft.in/youtube",
     siteName: "Tuft",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Tuft for Instagram Creators",
+        alt: "Tuft for YouTube Creators",
       },
     ],
     locale: "en_US",
@@ -30,29 +30,29 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tuft for Instagram Creators | Build & Own Your Community",
+    title: "Tuft for YouTube Creators | Build & Own Your Community",
     description:
-      "Tired of the Instagram algorithm? Tuft helps creators build owned communities, host exclusive content, and monetize their audience without the noise.",
+      "Tired of relying on AdSense and the YouTube algorithm? Tuft helps creators build owned communities, host exclusive content, and monetize their audience freely.",
     images: ["/og-image.png"],
   },
 };
 
-export default function ForCreatorsPage() {
+export default function ForYoutubeCreatorsPage() {
   return (
     <main className="relative z-10 min-h-screen bg-[#050505] text-white">
       <Navbar />
 
       {/* Hero Section */}
-      <CreatorsHero />
+      <YoutubeHero />
 
       {/* Problem Section (Scroll triggered) */}
-      <CreatorsProblem />
+      <YoutubeProblem />
 
       {/* Solution/Features Grid */}
       <CreatorsSolution />
 
       {/* Detailed Features Scroll Section */}
-      <InstagramDetailedFeatures />
+      <YoutubeDetailedFeatures />
 
       {/* Simple CTA similar to Pricing or just a big button at the bottom */}
       <section className="py-32 text-center relative overflow-hidden">
