@@ -1,51 +1,62 @@
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
-import fs from "fs";
-import matter from "gray-matter";
-import path from "path";
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 
-// Helper function to get post data
-function getPost(slug: string) {
-  const markdownWithMeta = fs.readFileSync(path.join(process.cwd(), "blog_content", slug + ".md"), "utf-8");
-  const { data: frontmatter, content } = matter(markdownWithMeta);
-  return {
-    ...frontmatter,
-    content,
-    title: frontmatter.title || "",
-    desc: frontmatter.desc || "",
-    cover_image: frontmatter.cover_image || "",
-    date: frontmatter.date || "",
-  };
+import { API_URLS } from "@/config/api_urls";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+interface Blog {
+  id: string;
+  title: string;
+  slug: string;
+  content: string;
+  cover_image: string | null;
+  cover_image_url: string | null;
+  created_at: string;
+  is_published: boolean;
 }
 
-export async function generateStaticParams() {
-  const files = fs.readdirSync(path.join(process.cwd(), "blog_content"));
-  return files.map((filename) => ({
-    slug: filename.replace(".md", ""),
-  }));
+async function getPost(slug: string): Promise<Blog | null> {
+  try {
+    const res = await fetch("http://localhost:8080/blogs/slug/" + slug, {
+      next: { revalidate: 3600 },
+    });
+
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.data || null;
+  } catch (error) {
+    console.error("Failed to fetch blog post:", error);
+    return null;
+  }
 }
 
-export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const params = await props.params;
   const { slug } = params;
-  const post = getPost(slug);
+  const post = await getPost(slug);
+
+  if (!post) {
+    return {
+      title: "Post Not Found",
+    };
+  }
 
   return {
     title: post.title,
-    description: post.desc,
+    description: post.content.replace(/<[^>]*>/g, "").substring(0, 160),
     openGraph: {
       title: post.title,
-      description: post.desc,
-      images: [post.cover_image],
+      description: post.content.replace(/<[^>]*>/g, "").substring(0, 160),
+      images: post.cover_image_url ? [post.cover_image_url] : [],
       type: "article",
     },
+    metadataBase: new URL("https://tuft.in"),
     twitter: {
       card: "summary_large_image",
       title: post.title,
-      description: post.desc,
-      images: [post.cover_image],
+      description: post.content.replace(/<[^>]*>/g, "").substring(0, 160),
+      images: post.cover_image_url ? [post.cover_image_url] : [],
     },
   };
 }
@@ -53,162 +64,59 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
 export default async function Post(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
   const { slug } = params;
-  const post = getPost(slug);
+  const post = await getPost(slug);
+
+  if (!post) notFound();
+
+  const formattedDate = new Date(post.created_at).toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 
   return (
-    <>
-      <style>
-        {`
-          #content {
-            color: #cbd5e1;
-          }
-          
-          #content p {
-            font-size: 1.125rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: #cbd5e1;
-          }
-
-          #content h1 {
-            font-size: 2.25rem;
-            line-height: 1.2;
-            font-weight: 700;
-            margin-top: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: #ffffff;
-          }
-
-          #content h2 {
-            font-size: 1.875rem;
-            line-height: 1.3;
-            font-weight: 600;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: #f8fafc;
-          }
-          
-          #content h3 {
-            font-size: 1.5rem;
-            line-height: 1.4;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: #f8fafc;
-          }
-
-          #content h4 {
-            font-size: 1.25rem;
-            line-height: 1.5;
-            font-weight: 600;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #f8fafc;
-          }
-
-          #content blockquote {
-            border-left: 4px solid #475569;
-            padding-left: 1rem;
-            font-style: italic;
-            color: #94a3b8;
-            margin: 1.5rem 0;
-          }
-          
-          #content strong {
-            font-weight: 600;
-            color: #ffffff;
-          }
-          
-          #content a {
-            color: #c084fc;
-            text-decoration: underline;
-            text-underline-offset: 2px;
-          }
-          
-          #content a:hover {
-            color: #d8b4fe;
-          }
-          
-          #content img {
-            margin: 2.5rem 0;
-          }
-
-          #content ul {
-            list-style-type: disc;
-            margin: 1rem 0;
-            padding-left: 2rem;
-          }
-
-          #content ol {
-            list-style-type: decimal;
-            margin: 1rem 0;
-            padding-left: 2rem;
-          }
-
-          #content li {
-            margin: 0.5rem 0;
-          }
-
-          #content table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-            max-width: 100%;
-          }
-
-          #content .table-container {
-            max-width: 85vw;
-            overflow-x: scroll;
-            margin: 1.5rem 0;
-          }
-
-          #content th, #content td {
-            border: 1px solid #334155;
-            padding: 12px;
-            text-align: left;
-            color: #cbd5e1;
-          }
-
-          #content th {
-            background-color: rgba(255, 255, 255, 0.05);
-            font-weight: bold;
-            color: #f8fafc;
-          }
-
-          #content tr:nth-child(even) {
-            background-color: rgba(255, 255, 255, 0.02);
-          }
-
-          #content tr:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-          }
-        `}
-      </style>
+    <main className="min-h-screen bg-slate-950 font-sans selection:bg-tuft-purple/30">
       <Navbar />
 
-      <main className="flex flex-col items-center max-w-[90vw] md:max-w-[60vw] mx-auto my-12 mt-40">
-        <h1 className="text-[30px] md:text-[50px] font-semibold font-alexandria text-center ">{post.title}</h1>
-        <span className="text-lg text-[#666] mb-10">On {post.date}</span>
+      <article className="pt-40 pb-20 px-4 md:px-8">
+        <div className="max-w-5xl mx-auto space-y-12">
+          {/* Header */}
+          <div className="text-center space-y-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-white font-alexandria tracking-tight leading-tight">{post.title}</h1>
+            <div className="flex items-center justify-center gap-4 text-slate-500 font-mono text-sm">
+              <span>Published on {formattedDate}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-800" />
+              <span>5 min read</span>
+            </div>
+          </div>
 
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={post.cover_image} alt="cover_photo" className="object-cover mx-auto mb-10" />
-        <div id="content" className={`py-[1vh] `}>
-          <Markdown
-            remarkPlugins={[remarkGfm]}
-            components={{
-              table: ({ node, ...props }) => (
-                <div className="table-container">
-                  <table {...props} />
-                </div>
-              ),
-            }}
-          >
-            {post.content}
-          </Markdown>
+          {/* Cover Image */}
+          {post.cover_image_url && (
+            <div className="relative aspect-video w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+              <img src={post.cover_image_url} alt={post.title} className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-linear-to-t from-slate-950/40 to-transparent" />
+            </div>
+          )}
+
+          {/* Content */}
+
+          <div
+            className="tiptap-editor prose prose-slate dark:prose-invert max-w-none text-lg leading-relaxed text-slate-300
+                prose-headings:text-white prose-headings:font-black prose-headings: py-4
+                prose-p:text-slate-400 prose-p:leading-relaxed
+                prose-strong:text-white
+                prose-blockquote:border-l-tuft-purple prose-blockquote:bg-white/5 prose-blockquote:rounded-r-2xl prose-blockquote:py-2 prose-blockquote:px-6
+                prose-img:rounded-3xl prose-img:shadow-2xl
+                prose-code:text-tuft-pink prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md
+                prose-table:border prose-table:border-white/10
+                prose-th:bg-white/5 prose-th:text-white prose-th:px-4 prose-th:py-4
+                prose-td:border-white/5 prose-td:px-4 prose-td:py-3"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
         </div>
-      </main>
+      </article>
 
       <Footer />
-    </>
+    </main>
   );
 }

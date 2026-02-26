@@ -1,15 +1,18 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   --color-tuft-purple: #965dbc;
   --color-tuft-pink: #c554b7;
   --color-tuft-dark: #050214;
 
-  --background-image-metallic-text: linear-gradient(180deg, #FFFFFF 0%, #94A3B8 100%);
+  --background-image-metallic-text: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
 }
 
 :root {
@@ -97,14 +100,19 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     border-left: 1px solid rgba(255, 255, 255, 0.06);
     border-right: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.01);
+    box-shadow:
+      0 4px 30px rgba(0, 0, 0, 0.3),
+      inset 0 0 20px rgba(255, 255, 255, 0.01);
     transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   .glass-card:hover {
     background: rgba(255, 255, 255, 0.03);
     border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 0 30px rgba(255, 255, 255, 0.02);
+    box-shadow:
+      0 20px 50px -12px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      inset 0 0 30px rgba(255, 255, 255, 0.02);
     transform: translateY(-4px);
   }
 
@@ -114,7 +122,9 @@
     overflow: hidden;
     background: white;
     color: black;
-    transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.3s ease;
+    transition:
+      transform 0.3s cubic-bezier(0.19, 1, 0.22, 1),
+      box-shadow 0.3s ease;
   }
   .btn-premium::after {
     content: "";
@@ -159,6 +169,54 @@
     transform: scale(0.97);
     transition: transform 0.1s;
   }
+}
+
+/* TipTap Editor Styles */
+.tiptap-editor table {
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  table-layout: fixed;
+  width: 100%;
+  border: 1px solid var(--border, #e2e8f0);
+}
+
+.tiptap-editor table td,
+.tiptap-editor table th {
+  border: 1px solid var(--border, #e2e8f0);
+  box-sizing: border-box;
+  min-width: 1em;
+  padding: 0.75rem 1rem;
+  position: relative;
+  vertical-align: top;
+}
+
+.tiptap-editor table th {
+  background-color: var(--muted, #f8fafc);
+  font-weight: 600;
+  text-align: left;
+}
+
+.tiptap-editor table .selectedCell:after {
+  background: rgba(200, 200, 255, 0.4);
+  content: "";
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.tiptap-editor table .column-resize-handle {
+  background-color: #60a5fa;
+  bottom: -2px;
+  pointer-events: none;
+  position: absolute;
+  right: -2px;
+  top: 0;
+  width: 4px;
 }
 
 @theme inline {

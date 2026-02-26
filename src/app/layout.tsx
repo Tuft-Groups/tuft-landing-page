@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth dark">
       <head>
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-4V7RECD9G6" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
