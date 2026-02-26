@@ -1,9 +1,10 @@
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 
-import { API_URLS } from "@/config/api_urls";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+
+export const runtime = "edge";
 
 interface Blog {
   id: string;
