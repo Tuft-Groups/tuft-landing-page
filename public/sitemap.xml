@@ -18,6 +18,9 @@
     <url>
       <loc>https://tuft.in/ig</loc>
    </url>
+   <url>
+      <loc>https://tuft.in/whatsapp</loc>
+   </url>
 
    <!-- Blog -->
    <url>
@@ -49,6 +52,13 @@
    </url>
    <url>
       <loc>https://tuft.in/blog/upsc-study-group</loc>
+   </url>
+
+   <url>
+      <loc>https://tuft.in/blog</loc>
+   </url>
+   <url>
+      <loc>https://tuft.in/youtube</loc>
    </url>
 
    <!-- Groups -->
