@@ -1,0 +1,30 @@
+# Tuft
+
+> All-in-One Community Platform for Leaders
+
+Tuft is a privacy-first community platform designed for educators, webinar hosts, and content creators. It streamlines communication, file sharing, payments, and analytics.
+
+## Core Features
+
+- **Signal (Feed)**: Admin-only broadcast feed for priority alerts and announcements.
+- **Threads (Chat)**: Organized topical sub-channels with native HD media sharing.
+- **Meetings**: Native HD video meetings with unlimited duration.
+- **The Vault (Files)**: Intelligent cloud storage with smart folders and version history.
+- **Payments**: Automated subscription billing and daily settlements.
+- **Polls & Forms**: Interactive data collection and community engagement tools.
+
+## Target Audience
+
+- **Educators**: Managing coaching academies and tuition centers.
+- **Content Creators**: Building private communities on Instagram, YouTube, and WhatsApp.
+- **Webinar Hosts**: Delivering high-quality virtual sessions.
+
+## Important Links
+
+- [Home](https://tuft.in)
+- [Features](https://tuft.in/features)
+- [Pricing](https://tuft.in/pricing)
+- [Blog](https://tuft.in/blog)
+- [Web App](https://app.tuft.in)
+- [Privacy Policy](https://tuft.in/privacy_policy)
+- [Terms & Conditions](https://tuft.in/terms_and_conditions)
