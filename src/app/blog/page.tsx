@@ -1,8 +1,7 @@
-import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { Navbar } from "@/components/layout/Navbar";
 import { ArrowUpRight, BookOpen } from "lucide-react";
 import { Metadata } from "next";
-import { API_URLS } from "@/config/api_urls";
 import Link from "next/link";
 
 export const metadata: Metadata = {
